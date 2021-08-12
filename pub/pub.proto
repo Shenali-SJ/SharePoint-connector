@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+ package pub;
+ option go_package = "./;pub";
+import "google/protobuf/empty.proto";
+
+message Listitemdata {
+
+ int64 id=1;
+ string createdat=2;
+ string updatedat=3;
+ string deletedat=4;
+ string title=5;
+ int64 itemid=6;
+ }
+message Requestdata {
+
+ int64 id=1;
+ string createdat=2;
+ string updatedat=3;
+ string deletedat=4;
+ string operation=5;
+ string siteurl=6;
+ string clientid=7;
+ string clientsecret=8;
+ string listname=9;
+ }
+
+message RequestDto {
+
+ string data=1;
+ }
+message ResponseDto {
+
+ string data=1;
+ }
+message SidecarRequest {
+ RequestDto RequestDto=1;
+} 
+
+service Service{
+ 
+rpc Sidecar(SidecarRequest) returns (ResponseDto) {}
+ }
